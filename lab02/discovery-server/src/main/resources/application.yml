@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: discovery-cluster
+---
+spring:
+  profiles: discovery1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: discovery1
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    service-url:
+      default-zone: http://discovery2:8762/eureka
+
+---
+spring:
+  profiles: discovery2
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: discovery2
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+  client:
+    service-url:
+      default-zone: http://discovery1:8761/eureka
