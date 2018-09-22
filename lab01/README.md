@@ -50,7 +50,7 @@ API校验：
 http://localhost:8761/eureka/apps
 ```
 
-#### 4. 运行Time微服务客户端
+#### 4. 运行Time微服务客户端(Ribbon负载均衡模式)
 
 直接以`Spring Boot App`方式运行time-client微服务
 
