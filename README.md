@@ -13,6 +13,7 @@
 # 实验目录
 1. [lab01](lab01)~Spring Cloud Eureka/Ribbon基础实验
 2. [lab02](lab02)~Spring Cloud Eureka/Ribbon高级实验
+3. [lab03](lab03)~Spring Cloud Zuul/Eureka/Ribbon集成实验
 
 # 注意
 1. 所有实验仅供学习参考，不是生产级
