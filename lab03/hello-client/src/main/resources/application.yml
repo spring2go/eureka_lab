@@ -3,7 +3,7 @@ spring:
     name: hello-client
 
 server:
-  port: 8072
+  port: 8073
 
 eureka:
   client:

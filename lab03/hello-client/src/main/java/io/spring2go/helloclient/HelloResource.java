@@ -2,6 +2,7 @@ package io.spring2go.helloclient;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,23 +12,22 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/rest/hello/client")
 public class HelloResource {
 
+	@Value("${server.port}")
+	private int port;
 
-    @Autowired
-    private RestTemplate restTemplate;
+	@Autowired
+	private RestTemplate restTemplate;
 
+	@HystrixCommand(fallbackMethod = "fallback", groupKey = "Hello", commandKey = "hello", threadPoolKey = "helloThread")
+	@GetMapping
+	public String hello() {
+		String url = "http://hello-server/rest/hello/server";
+		return restTemplate.getForObject(url, String.class) + " including client(on port " + port
+				+ ").";
+	}
 
-    @HystrixCommand(fallbackMethod = "fallback", groupKey = "Hello",
-            commandKey = "hello",
-            threadPoolKey = "helloThread"
-            )
-    @GetMapping
-    public String hello() {
-        String url = "http://hello-server/rest/hello/server";
-        return restTemplate.getForObject(url, String.class)+ " including client";
-    }
-
-    public String fallback(Throwable hystrixCommand) {
-        return "Fall Back Hello world";
-    }
+	public String fallback(Throwable hystrixCommand) {
+		return "Fall Back Hello world";
+	}
 
 }
