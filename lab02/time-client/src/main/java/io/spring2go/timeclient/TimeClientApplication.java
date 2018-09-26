@@ -58,7 +58,7 @@ public class TimeClientApplication {
 	
 	
 	@Bean
-//	@LoadBalanced
+	@LoadBalanced
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
