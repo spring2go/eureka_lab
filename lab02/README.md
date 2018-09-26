@@ -93,7 +93,6 @@ http://localhost:8080
 
 调整源代码：
 
-* 将注释掉代码恢复
 * 将restTemplate方法上的`@LoadBalanced`标注注释掉
 
 直接以`Spring Boot App`方式运行time-client微服务

@@ -23,6 +23,6 @@ public class TimeServiceApplication {
 	
 	@GetMapping
 	public String getTime() {
-		return "The current timne is " + new Date().toString() + "(answered by service running on " + port + ")";
+		return "The current time is " + new Date().toString() + "(answered by service running on " + port + ")";
 	}
 }
