@@ -12,4 +12,4 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
   instance:
-    hostname: localhost
+    instanceId: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}

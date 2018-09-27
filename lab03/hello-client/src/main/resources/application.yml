@@ -11,15 +11,7 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
-  instance:
-    hostname: localhost
-
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 60000
+  instance: 
+    instanceId: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
 
 
